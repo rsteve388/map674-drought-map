@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>Drought Levels Map</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.5.1/dist/leaflet.css" />
+  <style>
+    #map {
+      height: 540px;
+    }
+
+
+    /* Small devices (landscape phones, 576px and up) */
+    @media (min-width: 576px) {}
+
+    /* Medium devices (tablets, 768px and up) */
+    @media (min-width: 768px) {
+
+      aside {
+        height: 540px;
+      }
+    }
+
+    /* Large devices (desktops, 992px and up) */
+    @media (min-width: 992px) {}
+
+    /* Extra large devices (large desktops, 1200px and up) */
+    @media (min-width: 1200px) {}
+  </style>
+</head>
+
+<body class="bg-dark">
+
+  <div class="container-fluid">
+    <header class="row text-white py-3">
+      <div class="col mx-2">
+        <h1 class="">Drought Levels from August 2018 to August 2019</h1>
+      </div>
+    </header>
+
+    <section class="row">
+      <div class="col-12 col-md-8 col-lg-9 px-0">
+        <div id="map"></div>
+      </div>
+      <aside id="about" class="col-12 col-md-4 col-lg-3 text-white py-2 bg-secondary overflow-auto">
+        <section>
+          <h2>About this map</h2>
+          <p>Droughts in the southwestern United States which consist of, Utah, Colorado, New Mexico, and Arizona, experiance drought throughout the year.</p>
+          <br> What levels of drought does this area see? Do seasons affect when a drought will occur? How long does drought last in this region?
+          <p>According to the <a href="https://droughtmonitor.unl.edu/">Drought Monitor</a> Droughts have 5 levels. </p>
+          <ol> 
+            <li> D0: Abnormally Dry</li>
+            <li> D1: Moderate Drought</li>
+            <li> D2: Severe Drought</li>
+            <li> D3: Extreme Drought</li>
+            <li> D4: Execptional Drought</li>
+          </ol>
+        </section>
+      </aside>
+    </section>
+    <footer class="row text-white py-3">
+      <div class="col mx-2">
+        <ul class="list-unstyled">
+          <li>Rachel Stevenson</li>
+          <li>September 17th 2019</li>
+          <li><a href="https://droughtmonitor.unl.edu/AboutUSDM/WhatIsTheUSDM.aspx">meta data</a></li>
+        </ul>
+      </div>
+    </footer>
+  </div>
+
+
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
+  </script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
+  </script>
+  <script src="https://unpkg.com/leaflet@1.5.1/dist/leaflet.js"></script>
+  <script>
+    var options = {
+      center: [0, 180],
+      zoom: 1.1,
+      zoomSnap: .1
+    }
+    var map = L.map('map', options);
+
+    L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
+      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+    }).addTo(map);
+  </script>
+</body>
+
+</html>
