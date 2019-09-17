@@ -98,21 +98,37 @@
       attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
     }).addTo(map);
 /* Data for Droughts - Test */
-    const DAug18Json = d3.json('./Drought_Data/Aug_18_shp/USDM_20180814.geojson'),
-      DSep18Json = d3.json('./Drought_Data/Sep_18_shp/USDM_20180911.geojson'),
-      DOct18Json = d3.json('./Drought_Data/Oct_18_shp/USDM_20181016.geojson'),
-      DNov18Json = d3.json('./Drought_Data/Nov_18_shp/USDM_20181113.geojson'),
-      DDec18Json = d3.json('./Drought_Data/Dec_18_shp/USDM_20181211.geojson'),
-      DJan19Json = d3.json('./Drought_Data/Jan_19_shp/USDM_20190115.geojson'),
-      DFeb19Json = d3.json('./Drought_Data/Feb_19_shp/USDM_20190212.geojson')
-      
+ const states = d3.json('./WebMap/Drought_Data/states_21basic/states.json'),
+      DAug18Json = d3.json('./WebMap/Drought_Data/Aug_18_shp/USDM_20180814.json'),
+      DSep18Json = d3.json('./WebMap/Drought_Data/Sep_18_shp/USDM_20180911.json'),
+      DOct18Json = d3.json('./WebMap/Drought_Data/Oct_18_shp/USDM_20181016.json'),
+      DNov18Json = d3.json('./WebMap/Drought_Data/Nov_18_shp/USDM_20181113.json'),
+      DDec18Json = d3.json('./WebMap/Drought_Data/Dec_18_shp/USDM_20181211.json'),
+      DJan19Json = d3.json('./WebMap/Drought_Data/Jan_19_shp/USDM_20190115.json'),
+      DFeb19Json = d3.json('./WebMap/Drought_Data/Feb_19_shp/USDM_20190212.json'),
+      DMar19Json = d3.json('./WebMap/Drought_Data/Mar_19_Shp/USDM_20190312.json'),
+      DApr19Json = d3.json('./WebMap/Drought_Data/April_19_shp/USDM_20190416.json'),
+      DMay19Json = d3.json('./WebMap/Drought_Data/May_shp/USDM_20190514.json'),
+      DJun19Json = d3.json('./WebMap/Drought_Data/June_shp/USDM_20190618.json'),
+      DJul19Json = d3.json('./WebMap/Drought_Data/July_shp/USDM_20190716.json'),
+      DAug19Json = d3.json('./WebMap/Drought_Data/August_19_Shp/USDM_20190813.json')
 
- Promise.all([DAug18Json, DSep18Json, DOct18Json, DNov18Json, DDec18Json,DJan19Json,DFeb19Json]).then(drawMap)
+  Promise.all([states, DAug18Json, DSep18Json, DOct18Json, DNov18Json, DDec18Json,DJan19Json,DFeb19Json,DMar19Json,DApr19Json,DMay19Json,DJun19Json,DJul19Json,DAug19Json]).then(drawMap);
+  
+  function drawMap(data) {
+    console.log(data);
+    }; 
 
- function drawMap(data) {
-   console.log(data)
- }
-  </script>
+    /* Control Layers and Control Group */ 
+    let drought = L.layerGroup([DAug18Json, DSep18Json, DOct18Json, DNov18Json, DDec18Json,DJan19Json,DFeb19Json,DMar19Json,DApr19Json,DMay19Json,DJun19Json,DJul19Json,DAug19Json]);
+
+    const overlays = {
+      "States": states
+    }; 
+
+    L.control.layers(drought,overlays).addTo(map);
+    
+</script>
   
 
 
