@@ -10,7 +10,7 @@ This is the repo for research concerning Drought Data from August of 2018 to Aug
  <p> This notebook is mostly for reviewing the data contained therein, feel free to use it as an example of how to obtain, clean up and plot drought data over the course of a year. There are sub sections called "Results of X Month" and some of these months contain additional research that should be done concerning droughts in this region.</p> 
  <p> Contact Information is located within the notebook, feel free to email me if you have any questions regarding my observations. </p> 
  <p><b> Data Locations</b></p> 
-  <p> The shp files for the notebook are located in the Drought_Data folder in the Notebook directory.The Drought_Data File is the zipped shp files please only use these as a backup. 
+  <p> The shp files for the notebook are located in the Drought_Data folder in the Notebook directory.The Drought_Data File is the zipped shp files please only use these as a backup. <br>
   The Webmap Directory has a Drought_Data file for the geojson files for each of the 12 months plus a geojson file for the states. </p> 
  
  
