@@ -1,6 +1,6 @@
 # map674-drought-map
 This is the repo for research concerning Drought Data from August of 2018 to August 2019. 
-<p> The Notebook consists of three parts: 
+<p><b> The Notebook consists of three parts:</b></p> 
   <ol> 
     <li> Part One: Data Wranging - Looking at what the data consists of and how to set it up to be mapped. </li> 
     <li> Part Two: Plotting  Drought Data from August 2018 to August 2019. </li> 
