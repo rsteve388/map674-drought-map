@@ -196,6 +196,7 @@
         style: myStyle
       });
 
+      // use object to map colors to values below
       const dmStyles = {
         0: '#f6d2a9',
         1: '#f5b78e',
@@ -217,7 +218,7 @@
 
           // return an object of path values
           return {
-            color: dmStyles[dm],
+            color: dmStyles[dm], // assign color based off DM value of each feature
             fillOpacity: .8,
             weight: 1
           }
