@@ -13,6 +13,35 @@
       height: 540px;
     }
 
+    .legend-list li span {
+      width: 16px;
+      height: 16px;
+      margin: 0 12px;
+      display: inline-block;
+    }
+
+    .dm-1 {
+
+      background: #f5b78e;
+      display: block;
+    }
+
+    .dm-2 {
+      background: #ea8171;
+    }
+
+    .dm-3 {
+      background: #dd686c;
+    }
+
+    .dm-4 {
+      background: #ca5268;
+    }
+
+    .dm-5 {
+      background: #b13f64;
+    }
+
 
     /* Small devices (landscape phones, 576px and up) */
     @media (min-width: 576px) {}
@@ -50,16 +79,16 @@
         <section>
           <h2>About this map</h2>
           <p>Droughts in the southwestern United States which consist of, Utah, Colorado, New Mexico, and Arizona,
-            experiance drought throughout the year.</p>
+            experience drought throughout the year.</p>
           <br> What levels of drought does this area see? Do seasons affect when a drought will occur? How long does
           drought last in this region?
           <p>According to the <a href="https://droughtmonitor.unl.edu/">Drought Monitor</a> Droughts have 5 levels. </p>
-          <ol>
-            <li> D0: Abnormally Dry</li>
-            <li> D1: Moderate Drought</li>
-            <li> D2: Severe Drought</li>
-            <li> D3: Extreme Drought</li>
-            <li> D4: Execptional Drought</li>
+          <ol class='legend-list'>
+            <li><span class='dm-1'></span>D0: Abnormally Dry</li>
+            <li><span class='dm-2'></span>D1: Moderate Drought</li>
+            <li><span class='dm-3'></span>D2: Severe Drought</li>
+            <li><span class='dm-4'></span>D3: Extreme Drought</li>
+            <li><span class='dm-5'></span>D4: Exceptional Drought</li>
           </ol>
         </section>
       </aside>
@@ -136,7 +165,7 @@
     /* Geojson Layers */
     var myStyle = {
       color: "#ff7800",
-      weight: 5,
+      weight: 1,
       opacity: 0.65
     };
 
@@ -167,9 +196,35 @@
         style: myStyle
       });
 
+      const dmStyles = {
+        0: '#f6d2a9',
+        1: '#f5b78e',
+        2: '#ea8171',
+        3: '#dd686c',
+        4: '#ca5268',
+        5: '#b13f64'
+      }
+
       // add the first one to the map, but not the subsequent ones
       const aug18 = L.geoJson(DAug18Json, {
-        style: myStyle
+        style: function (feature) {
+
+          // you have access to feature data here
+          console.log(feature)
+
+          // create shorthand to layer's DM value
+          let dm = feature.properties.DM;
+
+          // return an object of path values
+          return {
+            color: dmStyles[dm],
+            fillOpacity: .8,
+            weight: 1
+          }
+
+
+
+        }
       }).addTo(map);
 
       const sep18 = L.geoJson(DSep18Json, {
