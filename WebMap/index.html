@@ -85,7 +85,6 @@
   </script>
   <script src="https://unpkg.com/leaflet@1.5.1/dist/leaflet.js"></script>
   <script src="https://d3js.org/d3.v5.min.js"></script>
-  <script src="/js/leaflet-0.7.2/leaflet.ajax.min.js"></script>
   
 
   <script>
@@ -100,66 +99,112 @@
       attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
     }).addTo(map);
 /* Data for Droughts - Test */
+const states = './Drought_Data/states_21basic/states.json',
+      DAug18Json =  './Drought_Data/August_18_Shp/USDM_20180814.json',
+      DSep18Json = './Drought_Data/Sep_18_shp/USDM_20180911.json',
+      DOct18Json = './Drought_Data/Oct_18_shp/USDM_20181016.json',
+      DNov18Json = './Drought_Data/Nov_18_shp/USDM_20181113.json',
+      DDec18Json = './Drought_Data/Dec_18_shp/USDM_20181211.json',
+      DJan19Json = './Drought_Data/Jan_19_shp/USDM_20190115.json',
+      DFeb19Json = './Drought_Data/Feb_19_shp/USDM_20190212.json',
+      DMar19Json = './Drought_Data/Mar_19_Shp/USDM_20190312.json',
+      DApr19Json = './Drought_Data/April_19_shp/USDM_20190416.json',
+      DMay19Json = './Drought_Data/May_shp/USDM_20190514.json',
+      DJun19Json = './Drought_Data/June_shp/USDM_20190618.json',
+      DJul19Json = './Drought_Data/July_shp/USDM_20190716.json',
+      DAug19Json = './Drought_Data/August_19_Shp/USDM_20190813.json'
 
-    const states = '\\Drought_Data\\states_21basic\\states.json',
-      DAug18Json = '\\Drought_Data\\Aug_18_shp\\USDM_20180814.json',
-      DSep18Json = '\\Drought_Data\\Sep_18_shp\\USDM_20180911.json',
-      DOct18Json = '\\Drought_Data\\Oct_18_shp\\USDM_20181016.json',
-      DNov18Json = '\\Drought_Data\\Nov_18_shp\\USDM_20181113.json',
-      DDec18Json = '\\Drought_Data\\Dec_18_shp\\USDM_20181211.json',
-      DJan19Json = '\\Drought_Data\\Jan_19_shp\\USDM_20190115.json',
-      DFeb19Json = '\\Drought_Data\\Feb_19_shp\\USDM_20190212.json',
-      DMar19Json = '\\Drought_Data\\Mar_19_Shp\\USDM_20190312.json',
-      DApr19Json = '\\Drought_Data\\April_19_shp\\USDM_20190416.json',
-      DMay19Json = '\\Drought_Data\\May_shp\\USDM_20190514.json',
-      DJun19Json = '\\Drought_Data\\June_shp\\USDM_20190618.json',
-      DJul19Json = '\\Drought_Data\\July_shp\\USDM_20190716.json',
-      DAug19Json = '\\Drought_Data\\August_19_Shp\\USDM_20190813.json'
+    Promise.all([
+      d3.json(states),
+      d3.json(DAug18Json),
+      d3.json(DSep18Json),
+      d3.json(DOct18Json),
+      d3.json(DNov18Json),
+      d3.json(DDec18Json),
+      d3.json(DJan19Json),
+      d3.json(DFeb19Json),
+      d3.json(DMar19Json),
+      d3.json(DApr19Json),
+      d3.json(DMay19Json),
+      d3.json(DJun19Json),
+      d3.json(DJul19Json),
+      d3.json(DAug19Json)
+    ]).then(drawMap);
 
+    function drawMap(data) {
+      console.log(data);
+    };
 
-  Promise.all([
-    d3.json(states),
-    d3.json(DAug18Json),
-    d3.json(DSep18Json),
-    d3.json(DOct18Json),
-    d3.json(DNov18Json),
-    d3.json(DDec18Json),
-    d3.json(DJan19Json),
-    d3.json(DFeb19Json),
-    d3.json(DMar19Json),
-    d3.json(DApr19Json),
-    d3.json(DMay19Json),
-    d3.json(DJun19Json),
-    d3.json(DJul19Json),
-    d3.json(DAug19Json) ]).then(drawMap);
-  
-  function drawMap(data) {
-    console.log(data);
-    }; 
+    /* Geojson Layers */
+    var myStyle ={
+      color: "#ff7800",
+	    weight: 5,
+	    opacity: 0.65
+    };
 
-    /* Control Layers and Control Group */ 
-    let drought = L.layerGroup([DAug18Json, DSep18Json, DOct18Json, DNov18Json, DDec18Json,DJan19Json,DFeb19Json,DMar19Json,DApr19Json,DMay19Json,DJun19Json,DJul19Json,DAug19Json]);
+  L.geoJson(DAug18Json, {
+    style: myStyle
+  }).addTo(map);
+
+  L.geoJson(DSep18Json, {
+    style: "#39a359"
+  }).addTo(map);
+
+  L.geoJson(DOct18Json, {
+    style: "#5124d6"
+  }).addTo(map);
+
+  L.geoJson(DNov18Json, {
+    style: "#2e72c9"
+  }).addTo(map);
+
+  L.geoJson(DDec18Json, {
+    style:"#c23608"
+  }).addTo(map);
+
+  L.geoJson(DJan19Json, {
+    style: "#53b072"
+  }).addTo(map);
+
+  L.geoJson(DFeb19Json, {
+    style: "#88c4d1"
+  }).addTo(map); 
+
+  L.geoJson(DMar19Json, {
+    style: "#bd4bd6"
+  }).addTo(map);
+
+  L.geoJson(DApr19Json, {
+    style: "#9ab08b"
+  }).addTo(map); 
+
+  L.geoJson(DMay19Json,{
+    style: "#bec918"
+  }).addTo(map);
+
+  L.geoJson(DJun19Json, {
+    style: "#d1a575"
+  }).addTo(map);
+
+  L.geoJson(DJul19Json, {
+    style: "#4d7682"
+  }).addTo(map);
+
+  L.geoJson(DAug19Json, {
+    style: "#4f5fc9"
+  }).addTo(map); 
+
+    /* Control Layers and Control Group */
+    let drought = L.layerGroup([DAug18Json, DSep18Json, DOct18Json, DNov18Json, DDec18Json, DJan19Json, DFeb19Json,
+       DMar19Json, DApr19Json, DMay19Json, DJun19Json, DJul19Json, DAug19Json
+    ]);
 
     const overlays = {
       "States": states
-    }; 
-
-    L.control.layers(drought,overlays).addTo(map);
-
-
+    };
   
+    L.control.layers(drought, overlays).addTo(map);
 
-    
 </script>
-  
-
-
-
-
-
-
-
-
 </body>
-
 </html>
